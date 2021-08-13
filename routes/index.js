@@ -16,11 +16,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/feed', verificarUsuarioLogado, function(req, res, next) {
-  res.render('feed', { usuario: req.session.usuario });
+  res.render('feed', { usuario: req.session.usuario, title: 'Página Cadastro' });
 });
 
 router.get('/cadastro', function(req, res, next) {
-  res.render('cadastro');
+  res.render('cadastro', {title: 'Página Cadastro'});
 });
 
 router.post("/cadastro", function(req, res, next) {
