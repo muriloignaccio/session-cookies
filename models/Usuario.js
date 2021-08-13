@@ -16,3 +16,9 @@ exports.criarUmUsuario = (nome, email, senha) => {
 
   return usuario;
 }
+
+exports.procurarEmail = (email) => {
+  const emailEncontrado = (usuarios.find((usuario) => email === usuario.email));
+  console.log(email)
+  return emailEncontrado;
+}

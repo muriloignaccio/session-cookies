@@ -35,9 +35,29 @@ router.post("/cadastro", function(req, res, next) {
   res.redirect('/feed');
 });
 
+router.get('/login', function(req, res, next) {
+  let usuario;
+  let tema = req.cookies.tema ? req.cookies.tema : "light-mode";
+
+  if (req.session.usuario) {
+    usuario = req.session.usuario;
+  }
+
+  res.render('login', { title: 'Página Login', usuario, tema });
+});
+
+router.post('/login', function(req, res) {
+  const {email, senha} = req.body;
+
+  const usuario = LoginController.efetuarLogin(email,senha);
+  req.session.usuario = usuario;
+  console.log(usuario)
+  res.redirect("/feed");
+});
+
 router.get("/logout", function(req, res) {
   req.session.destroy();
   res.redirect("/");
-})
+});
 
 module.exports = router;

@@ -8,3 +8,23 @@ exports.criarUsuario = (nome, email, senha) => {
   
   return usuario;
 }
+
+exports.efetuarLogin = (email, senha) => {
+  const usuarioLogin = UsuarioModel.procurarEmail(email);
+
+  console.log(usuarioLogin)
+  if (!usuarioLogin) {
+    throw new Error('Acesso negado, verifique email e senha');
+  }
+
+  
+  const {senha: senhaCriptografada} = usuarioLogin;
+
+  const senhaValida = bcrypt.compareSync(senha, senhaCriptografada);
+
+  if (!senhaValida) {
+    throw new Error('Acesso negado, verifique email e senha');
+  }
+
+  return usuarioLogin
+}
