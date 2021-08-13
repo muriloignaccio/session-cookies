@@ -19,5 +19,18 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreliman/session-cookies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreliman/session-cookies/issues"
+  },
+  "homepage": "https://github.com/andreliman/session-cookies#readme",
+  "description": ""
 }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include partials/head.ejs %>
-  <body>
-    <form action="/cadastro" method="POST">
-      <label for="nome">Nome</label>
-      <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+<%- include('partials/head') %> 
+<body>
+  <form action="/cadastro" method="POST">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
 
       <label for="email">Email</label>
       <input type="email" name="email" id="email" placeholder="Digite seu email">

@@ -1,10 +1,10 @@
-const express = require('express');
-const LoginController = require('../controllers/LoginController');
-const verificarUsuarioLogado = require('../middlewares/verificarUsuarioLogado');
+const express = require("express");
+const LoginController = require("../controllers/LoginController");
+const verificarUsuarioLogado = require("../middlewares/verificarUsuarioLogado");
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get("/", function (req, res, next) {
   let usuario;
   let tema = req.cookies.tema ? req.cookies.tema : "light-mode";
 
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     usuario = req.session.usuario;
   }
 
-  res.render('index', { title: 'Página Inicial', usuario, tema });
+  res.render("index", { title: "Página Inicial", usuario, tema });
 });
 
 router.get('/feed', verificarUsuarioLogado, function(req, res, next) {
@@ -23,16 +23,20 @@ router.get('/cadastro', function(req, res, next) {
   res.render('cadastro', {title: 'Página Cadastro'});
 });
 
-router.post("/cadastro", function(req, res, next) {
+router.post("/cadastro", function (req, res, next) {
   const { nome, email, senha, tema } = req.body;
 
-  const { senha: senhaNaoUsada, ...usuario } = LoginController.criarUsuario(nome, email, senha);
+  const { senha: senhaNaoUsada, ...usuario } = LoginController.criarUsuario(
+    nome,
+    email,
+    senha
+  );
 
   req.session.usuario = usuario;
 
   res.cookie("tema", tema);
 
-  res.redirect('/feed');
+  res.redirect("/feed");
 });
 
 router.get('/login', function(req, res, next) {
