@@ -15,12 +15,12 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Página Inicial", usuario, tema });
 });
 
-router.get("/feed", verificarUsuarioLogado, function (req, res, next) {
-  res.render("feed", { usuario: req.session.usuario });
+router.get('/feed', verificarUsuarioLogado, function(req, res, next) {
+  res.render('feed', { usuario: req.session.usuario, title: 'Página Cadastro' });
 });
 
-router.get("/cadastro", function (req, res, next) {
-  res.render("cadastro");
+router.get('/cadastro', function(req, res, next) {
+  res.render('cadastro', {title: 'Página Cadastro'});
 });
 
 router.post("/cadastro", function (req, res, next) {
@@ -39,24 +39,27 @@ router.post("/cadastro", function (req, res, next) {
   res.redirect("/feed");
 });
 
-router.get("/login", function (req, res, next) {
-  res.render("login", { title: "Login" });
+router.get('/login', function(req, res, next) {
+  let usuario;
+  let tema = req.cookies.tema ? req.cookies.tema : "light-mode";
+
+  if (req.session.usuario) {
+    usuario = req.session.usuario;
+  }
+
+  res.render('login', { title: 'Página Login', usuario, tema });
 });
 
-router.post("/login", function (req, res, next) {
-  const { email, senha } = req.body;
+router.post('/login', function(req, res) {
+  const {email, senha} = req.body;
 
-  const { senha: senhaNaoUsada, ...usuario } = LoginController.logarUsuario({
-    email,
-    senha,
-  });
-
+  const usuario = LoginController.efetuarLogin(email,senha);
   req.session.usuario = usuario;
-
+  console.log(usuario)
   res.redirect("/feed");
 });
 
-router.get("/logout", function (req, res) {
+router.get("/logout", function(req, res) {
   req.session.destroy();
   res.redirect("/");
 });
