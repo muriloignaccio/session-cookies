@@ -10,17 +10,15 @@
   </header>
   <main class="container px-5">
     <div class="row g-3 gy-5">
-      <% posts.forEach(post => { %>
+      <% comentarios.forEach(comentario => { %>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><%= post.title %></h5>
-              <p class="card-text"><%= post.body %></p>
+              <h5 class="card-title"><%= comentario.name %></h5>
+              <p class="card-text"><%= comentario.email %></p>
+              <p class="card-text"><%= comentario.body %></p>
               <button type="button" class="btn btn-primary">Like</button>
               <button type="button" class="btn btn-danger">Dislike</button>
-              <button type="button" class="btn btn-success">
-                <a style="text-decoration: none; color: white;" href="/posts/<%= post.id %>/comentarios">Comentários</a>
-              </button>
             </div>
           </div>
         </div>

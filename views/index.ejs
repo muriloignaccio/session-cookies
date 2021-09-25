@@ -2,7 +2,10 @@
 <html>
   <%- include('partials/head.ejs') %> 
   <body class="<%= tema %>">
-    <header class="d-flex justify-content-between py-3 px-5">
+    <header class="d-flex justify-content-between py-3 px-5 red-background">
+      <nav class="menu">
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+      </nav>
       <p>Welcome to <%= title %></p>
 
       <% if (typeof usuario !== "undefined") { %> 
@@ -11,7 +14,7 @@
           <button>Sair</button>
         </a>
       <% } else { %> 
-        <div>
+        <div class="menu-content">
           olá, faça seu <a href="/login">Login</a> ou <a href="/cadastro">Cadastre-se</a>
         </div>
       <% } %>
@@ -19,5 +22,78 @@
 
     </header>
     
+    <main>
+      <form action="" class="mt-5">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">CEP</span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Digite o CEP" 
+            aria-label="CEP" 
+            aria-describedby="basic-addon1"
+            maxlength="9"
+            name="cep" 
+            id="cep"
+          >
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Logradouro</span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Logradouro" 
+            aria-label="Logradouro" 
+            aria-describedby="basic-addon1"
+            name="logradouro" 
+            id="logradouro"
+            disabled
+          >
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Bairro</span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Bairro" 
+            aria-label="Bairro" 
+            aria-describedby="basic-addon1"
+            name="bairro" 
+            id="bairro"
+            disabled
+          >
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Localidade</span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Localidade" 
+            aria-label="Localidade" 
+            aria-describedby="basic-addon1"
+            name="localidade" 
+            id="localidade"
+            disabled
+          >
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">UF</span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="UF" 
+            aria-label="UF" 
+            aria-describedby="basic-addon1"
+            name="uf" 
+            id="uf"
+            disabled
+          >
+        </div>
+      </form>
+    </main>
   </body>
 </html>
